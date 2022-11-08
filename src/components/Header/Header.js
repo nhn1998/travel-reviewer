@@ -34,7 +34,7 @@ const Header = () => {
                         <img src={logo} alt="" />
                     </div>
                 </div>
-                <Link to='/home' className="btn btn-ghost normal-case text-xl">Travel Reviewer</Link>
+                <Link to='/home' className="btn btn-ghost normal-case text-xl italic">Travel Reviewer</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
@@ -46,9 +46,10 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end mr-10">
-                {
-                    user?.email
-                }
+                <div className='mr-4'>
+                <img className="w-20 rounded-full mr-4" src={user?.photoURL} alt="" />
+                {user?.displayName}
+                </div>
                 {
                     user?.email ?
                         <button onClick={HandleLogOut}><FaSignOutAlt></FaSignOutAlt></button> :

@@ -18,6 +18,8 @@ const SignUp = () => {
             console.log(user)
             form.reset()
             HandleUpdateUserProfile(name,photoUrl)
+            .then(()=>{})
+            .catch(err=>console.log(err))
         })
         .catch(err=>console.log(err))
     };

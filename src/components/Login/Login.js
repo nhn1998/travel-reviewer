@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
 import image from '../SignUp/login.jpg'
 const Login = () => {
     const {login}=useContext(authContext);
+    const [error,setError]=useState(null)
     const HandleLogin=event=>{
         event.preventDefault();
         const form = event.target;
@@ -14,8 +15,12 @@ const Login = () => {
             const user = result.user;
             console.log(user)
             form.reset();
+            setError('')
         })
-        .catch(err=>console.log(err))
+        .catch(err=>{
+            console.log(err)
+            setError(err.message)
+        })
     }
     return (
         <div className="hero min-h-screen bg-base-200 pt-20">
@@ -41,6 +46,7 @@ const Login = () => {
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
           </label>
+            <p className='text-red-800'>{error}</p>
         </div>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
