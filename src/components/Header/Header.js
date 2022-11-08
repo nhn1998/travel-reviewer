@@ -5,11 +5,12 @@ import logo from '../Header/logo.png'
 import { FaSignOutAlt } from "react-icons/fa";
 
 const Header = () => {
-    const {user,logOut} =useContext(authContext)
-    const HandleLogOut = ()=>{
+    const { user, logOut } = useContext(authContext)
+
+    const HandleLogOut = () => {
         logOut()
-        .then()
-        .catch(err=>console.log(err))
+            .then()
+            .catch(err => console.log(err))
     }
     return (
         <div className="navbar bg-orange-100">
@@ -45,9 +46,17 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end mr-10">
-                <Link to='/login' className="btn mr-3">Login</Link>
-                <Link to='/signup'><button className="btn btn-accent">Register</button></Link>
-                <button onClick={HandleLogOut}><FaSignOutAlt></FaSignOutAlt></button>
+                {
+                    user?.email
+                }
+                {
+                    user?.email ?
+                        <button onClick={HandleLogOut}><FaSignOutAlt></FaSignOutAlt></button> :
+                        <>
+                            <Link to='/login' className="btn mr-3">Login</Link>
+                            <Link to='/signup'><button className="btn btn-accent">Register</button></Link>
+                        </>
+                }
             </div>
         </div>
     );

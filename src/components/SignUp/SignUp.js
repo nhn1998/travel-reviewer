@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
 import image from './login.jpg'
 const SignUp = () => {
-    const {register}=useContext(authContext)
+    const {register,updateUserProfile}=useContext(authContext)
     const HandleSubmit = event=>{
         event.preventDefault();
         const form = event.target;
@@ -17,8 +17,16 @@ const SignUp = () => {
             const user = result.user;
             console.log(user)
             form.reset()
+            HandleUpdateUserProfile(name,photoUrl)
         })
         .catch(err=>console.log(err))
+    };
+    const HandleUpdateUserProfile=(name,photoUrl)=>{
+        const profile={
+            displayName : name, 
+            photoURL : photoUrl
+        }
+        updateUserProfile(profile)
     }
     return (
         <div className="hero min-h-screen bg-base-200 pt-20">
@@ -34,25 +42,25 @@ const SignUp = () => {
           <label className="label">
             <span className="label-text">Name</span>
           </label>
-          <input type="text" name='name' placeholder="Your name" className="input input-bordered" />
+          <input type="text" name='name' placeholder="Your name" className="input input-bordered" required/>
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">PhotoUrl</span>
           </label>
-          <input type="text" name='photoUrl' placeholder="Your photo Url" className="input input-bordered" />
+          <input type="text" name='photoUrl' placeholder="Your photo Url" className="input input-bordered" required/>
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" name='email' placeholder="email" className="input input-bordered" />
+          <input type="email" name='email' placeholder="email" className="input input-bordered" required/>
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" name='password' placeholder="password" className="input input-bordered" />
+          <input type="password" name='password' placeholder="password" className="input input-bordered" required/>
         </div>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Register</button>
