@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
 import image from '../SignUp/login.jpg'
 import { FaGooglePlus } from "react-icons/fa";
@@ -7,6 +7,7 @@ import { FaGooglePlus } from "react-icons/fa";
 const Login = () => {
     const {login,googleLogin}=useContext(authContext);
     const [error,setError]=useState(null)
+    const navigate = useNavigate()
     const HandleLogin=event=>{
         event.preventDefault();
         const form = event.target;
@@ -18,6 +19,7 @@ const Login = () => {
             console.log(user)
             form.reset();
             setError('')
+            navigate('/')
         })
         .catch(err=>{
             console.log(err)
@@ -26,6 +28,12 @@ const Login = () => {
     }
     const HandleGoogleLogin=()=>{
         googleLogin()
+        .then(result=>{
+            const user = result.user;
+            console.log(user)
+            navigate('/')
+        })
+        .catch(err=>console.log(err))
     }
     return (
         <div className="hero min-h-screen bg-base-200 pt-20">
@@ -60,7 +68,7 @@ const Login = () => {
         
       </form>
       <div>
-        <button className="btn btn-wide mb-5"><FaGooglePlus size={20} className='mr-3'></FaGooglePlus> Sign In with Google</button>
+        <button onClick={HandleGoogleLogin} className="btn btn-wide mb-5"><FaGooglePlus size={20} className='mr-3'></FaGooglePlus> Sign In with Google</button>
         </div>
     </div>
   </div>
