@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
 import image from '../SignUp/login.jpg'
+import { FaGooglePlus } from "react-icons/fa";
+
 const Login = () => {
-    const {login}=useContext(authContext);
+    const {login,googleLogin}=useContext(authContext);
     const [error,setError]=useState(null)
     const HandleLogin=event=>{
         event.preventDefault();
@@ -21,6 +23,9 @@ const Login = () => {
             console.log(err)
             setError(err.message)
         })
+    }
+    const HandleGoogleLogin=()=>{
+        googleLogin()
     }
     return (
         <div className="hero min-h-screen bg-base-200 pt-20">
@@ -44,7 +49,7 @@ const Login = () => {
           </label>
           <input type="password" name='password' placeholder="password" className="input input-bordered" required/>
           <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+            <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
           </label>
             <p className='text-red-800'>{error}</p>
         </div>
@@ -52,7 +57,11 @@ const Login = () => {
           <button className="btn btn-primary">Login</button>
         </div>
         <p className='mt-5'>Don't have an account?<Link to='/signup' className='font-bold'>Register</Link></p>
+        
       </form>
+      <div>
+        <button className="btn btn-wide mb-5"><FaGooglePlus size={20} className='mr-3'></FaGooglePlus> Sign In with Google</button>
+        </div>
     </div>
   </div>
 </div>

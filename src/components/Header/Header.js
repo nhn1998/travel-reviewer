@@ -52,7 +52,7 @@ const Header = () => {
                 </div>
                 {
                     user?.email ?
-                        <button onClick={HandleLogOut}><FaSignOutAlt></FaSignOutAlt></button> :
+                        <button onClick={HandleLogOut}><FaSignOutAlt size={30}></FaSignOutAlt></button> :
                         <>
                             <Link to='/login' className="btn mr-3">Login</Link>
                             <Link to='/signup'><button className="btn btn-accent">Register</button></Link>
