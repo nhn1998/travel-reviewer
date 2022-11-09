@@ -8,6 +8,9 @@ import About from './components/About/About';
 import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
 import AllServices from './components/AllServices/AllServices';
+import ServiceDetails from './components/ServiceDetails/ServiceDetails';
+
+
 
 
 function App() {
@@ -41,6 +44,11 @@ function App() {
           path:'/services',
           loader:()=>fetch('http://localhost:5000/services'),
           element:<AllServices></AllServices>
+        },
+        {
+          path:'/services/:id',
+          loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`),
+          element:<ServiceDetails></ServiceDetails>
         }
       ]
     },

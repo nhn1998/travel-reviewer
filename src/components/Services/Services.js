@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { FaStarHalfAlt } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
+import { Link } from 'react-router-dom';
 const Services = ({service}) => {
-    const {name,img,description,price,rating}=service;
+    const {name,img,description,price,rating,_id}=service;
     const [images,setImages]=useState([{img}])
     console.log(images)
     return (
@@ -23,7 +24,7 @@ const Services = ({service}) => {
     <div className='flex'>{rating}<FaStarHalfAlt></FaStarHalfAlt></div>
     </div>
     <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
+      <Link to={`/services/${_id}`}><button className="btn btn-primary">View Details</button></Link>
     </div>
   </div>
 </div>
