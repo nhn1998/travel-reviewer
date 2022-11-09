@@ -9,6 +9,7 @@ import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
 import AllServices from './components/AllServices/AllServices';
 import ServiceDetails from './components/ServiceDetails/ServiceDetails';
+import WrongRoute from './components/WrongRoute';
 
 
 
@@ -49,8 +50,13 @@ function App() {
           path:'/services/:id',
           loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`),
           element:<ServiceDetails></ServiceDetails>
+        },
+        {
+          path:'/*',
+          element:<WrongRoute></WrongRoute>
         }
-      ]
+      ],
+      
     },
 
   ])
