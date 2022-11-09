@@ -7,6 +7,8 @@ import Main from './components/Main/Main';
 import About from './components/About/About';
 import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
+import AllServices from './components/AllServices/AllServices';
+
 
 function App() {
   const router = createBrowserRouter([
@@ -16,6 +18,7 @@ function App() {
       children:[
         {
           path:'/',
+          loader:()=>fetch('http://localhost:5000/service'),
           element:<Home></Home>
         },
         {
@@ -33,13 +36,18 @@ function App() {
         {
           path:'/login',
           element:<Login></Login>
+        },
+        {
+          path:'/services',
+          loader:()=>fetch('http://localhost:5000/services'),
+          element:<AllServices></AllServices>
         }
       ]
     },
 
   ])
   return (
-    <div className="App">
+    <div>
       <RouterProvider router={router}></RouterProvider>
     </div>
   );
