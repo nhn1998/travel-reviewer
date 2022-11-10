@@ -50,7 +50,7 @@ const ServiceDetails = ({children}) => {
             .then(data => {
                 console.log(data)
                 if(data.acknowledged){
-                    alert('user added successfully')
+                    alert('user added successfully.Please do refresh')
                 }
                 form.reset()
             })

@@ -1,23 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const MyReviewList = ({ revie }) => {
+const MyReviewList = ({ revie,HandleDelete }) => {
     // console.log(revie)
-    const HandleDelete = id => {
-        const agree = window.confirm('Do you want to delete this item?')
-        if (agree) {
-            // console.log('deleting this',id)
-            fetch(`https://assaingment-eleven-server-nhn1998.vercel.app/users/${id}`, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                    if (data.acknowledged) {
-                        alert('review deleted successfully')
-                    }
-                })
-        }
-    }
+    
     return (
         <div className="card w-96 bg-base-100 shadow-xl m-5">
             <div className="card-body">
