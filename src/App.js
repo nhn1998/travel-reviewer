@@ -50,7 +50,7 @@ function App() {
         },
         {
           path:'/addservices',
-          element:<AddServices></AddServices>
+          element:<PrivateRoute><AddServices></AddServices></PrivateRoute>
         },
         {
           path:'/services',

@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Services from '../Services/Services';
+import AnotherHome from './AnotherHome';
 import image1 from './img1.jpg'
 import image2 from './img2.jpg'
 import image3 from './img3.jpg'
 import image4 from './img4.jpg'
 const Home = () => {
     const services = useLoaderData();
-    console.log(services)
+    // console.log(services)
+    const [addServices,setAddServices]=useState([])
+    console.log(addServices)
+    useEffect(()=>{
+        fetch('https://assaingment-eleven-server-nhn1998.vercel.app/addServices')
+        .then(res=>res.json())
+        .then(data=>setAddServices(data))
+    },[])
+
     return (
         <div>
             <div className="carousel w-full h-96 mt-20 rounded-2xl">
@@ -47,6 +56,17 @@ const Home = () => {
         </div>
         <div>
         <Link className='grid justify-center' to='/services'><button className="btn btn-outline mt-10 ">See All</button></Link>
+        </div>
+        <br /><br /><br /><br />
+        <hr />
+        <div>
+            <div className="text-4xl mt-10">Here the added services</div>
+
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10'>
+                {
+                    addServices.map(addservice=><AnotherHome key={addservice._id} addservice={addservice}></AnotherHome>)
+                }
+            </div>
         </div>
         </div>
     );

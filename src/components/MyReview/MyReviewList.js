@@ -4,7 +4,11 @@ const MyReviewList = ({ revie,HandleDelete }) => {
     // console.log(revie)
     
     return (
-        <div className="card w-96 bg-base-100 shadow-xl m-5">
+        <div>
+            {
+                revie?.serviceName?<>{revie.Review}</>:<p>there is none</p>
+            }
+            <div className="card w-96 bg-base-100 shadow-xl m-5">
             <div className="card-body">
                 <div>
                     <div className="text-xl">{revie.serviceName}</div>
@@ -21,6 +25,7 @@ const MyReviewList = ({ revie,HandleDelete }) => {
                 </div>
                 <p>{revie.Review}</p>
             </div>
+        </div>
         </div>
     );
 };
