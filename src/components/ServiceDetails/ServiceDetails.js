@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FaStarHalfAlt } from 'react-icons/fa';
 import { Link, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import { authContext } from '../AuthProvider/AuthProvider';
 import ReviewList from '../ReviewList/ReviewList';
 
@@ -10,6 +11,7 @@ const ServiceDetails = ({children}) => {
     const { user } = useContext(authContext)
     const [reviews, setReviews] = useState([])
     const navigate=useNavigate()
+    useTitle('review')
     // console.log(reviews)
     useEffect(()=>{
         fetch(`https://assaingment-eleven-server-nhn1998.vercel.app/users?servicesId=${services._id}`)

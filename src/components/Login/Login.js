@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../AuthProvider/AuthProvider';
 import image from '../SignUp/login.jpg'
 import { FaGooglePlus } from "react-icons/fa";
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
     const {login,googleLogin,loading}=useContext(authContext);
@@ -10,6 +11,7 @@ const Login = () => {
     const navigate = useNavigate()
     const location =useLocation()
     const from = location.state?.from?.pathname || '/';
+    useTitle('login')
     const HandleLogin=event=>{
         event.preventDefault();
         const form = event.target;

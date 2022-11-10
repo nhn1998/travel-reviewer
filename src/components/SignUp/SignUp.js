@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import { authContext } from '../AuthProvider/AuthProvider';
 import image from './login.jpg'
 const SignUp = () => {
     const {register,updateUserProfile}=useContext(authContext)
+    useTitle('Register')
     const HandleSubmit = event=>{
         event.preventDefault();
         const form = event.target;

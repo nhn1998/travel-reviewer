@@ -5,9 +5,7 @@ const MyReviewList = ({ revie,HandleDelete }) => {
     
     return (
         <div>
-            {
-                revie?.serviceName?<>{revie.Review}</>:<p>there is none</p>
-            }
+            
             <div className="card w-96 bg-base-100 shadow-xl m-5">
             <div className="card-body">
                 <div>

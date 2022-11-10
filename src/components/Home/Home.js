@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { FaCreditCard, FaFirefoxBrowser, FaGlobeAfrica, FaShoppingBag } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import Services from '../Services/Services';
 import AnotherHome from './AnotherHome';
 import image1 from './img1.jpg'
 import image2 from './img2.jpg'
 import image3 from './img3.jpg'
 import image4 from './img4.jpg'
+import image5 from './img5.jpg'
 const Home = () => {
     const services = useLoaderData();
     // console.log(services)
+    useTitle('Home')
     const [addServices,setAddServices]=useState([])
     console.log(addServices)
     useEffect(()=>{
@@ -49,7 +53,11 @@ const Home = () => {
                 </div>
             </div>
         </div>
+            <div className='mt-10 text-center'>
+                <div className="text-4xl">Explore Your Destination</div>
+            </div>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+            
             {
                 services.map(service =><Services key={service._id} service={service}></Services>)
             }
@@ -66,6 +74,58 @@ const Home = () => {
                 {
                     addServices.map(addservice=><AnotherHome key={addservice._id} addservice={addservice}></AnotherHome>)
                 }
+            </div>
+        </div>
+        <div className='mt-32'>
+            <div className='text-3xl'>
+                What we Serve
+            </div>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-10 ml-10'>
+            <div className='text-6xl font-bold'>
+                Top Values <br />For You <FaFirefoxBrowser></FaFirefoxBrowser>
+                <p className='text-xl'>
+                    
+                try a varity of benifits <br /> when using our service
+                </p>
+            </div>
+            <div className='text-4xl'>
+            <FaGlobeAfrica></FaGlobeAfrica>
+                Lot Of Choices 
+                <p className='text-xl'>total 400+ destination we work with</p>
+            </div>
+            <div className='text-4xl'>
+                <FaShoppingBag></FaShoppingBag>
+                Best Tour Guide
+                <p className='text-xl'>Our tour guide has 15+ years experience</p>
+            </div>
+            <div className='text-4xl'>
+                <FaCreditCard></FaCreditCard>
+                Easy Booking
+                <p className='text-xl'>With an easy and fast ticket purchase process</p>
+            </div>
+            </div>
+        </div>
+        <div className='mt-32 m-10 grid grid-cols-1 lg:grid-cols-2'>
+            <div>
+                <img className='rounded-xl' src={image5} alt="" />
+            </div>
+            <div className='ml-10 text-6xl'>
+                With our exprience we will serve you
+                <p className='text-xl mt-10'>Since we first open we alaways prirority is conviniece to provide our low prices and the easy process</p>
+                <div className='grid grid-cols-3'>
+                    <div className='text-3xl mt-10'>
+                        15 
+                        <p className='text-xl'>years of <br /> exprience</p>
+                    </div>
+                    <div>
+                        400+
+                        <p className='text-xl'>Destination</p>
+                    </div>
+                    <div>
+                        50k+
+                        <p className='text-xl'>Happy customer</p>
+                    </div>
+                </div>
             </div>
         </div>
         </div>
