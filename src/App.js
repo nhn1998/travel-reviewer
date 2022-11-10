@@ -22,7 +22,7 @@ function App() {
       children:[
         {
           path:'/',
-          loader:()=>fetch('http://localhost:5000/service'),
+          loader:()=>fetch('https:/assaingment-eleven-server.vercel.app/service'),
           element:<Home></Home>
         },
         {
@@ -43,12 +43,12 @@ function App() {
         },
         {
           path:'/services',
-          loader:()=>fetch('http://localhost:5000/services'),
+          loader:()=>fetch('https:/assaingment-eleven-server.vercel.app/services'),
           element:<AllServices></AllServices>
         },
         {
           path:'/services/:id',
-          loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`),
+          loader:({params})=>fetch(`https:/assaingment-eleven-server.vercel.app/services/${params.id}`),
           element:<ServiceDetails></ServiceDetails>
         },
         {
