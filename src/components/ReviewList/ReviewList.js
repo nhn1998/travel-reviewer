@@ -3,6 +3,7 @@ import { authContext } from '../AuthProvider/AuthProvider';
 
 const ReviewList = ({ revie }) => {
     const { user } = useContext(authContext)
+    console.log(revie)
     return (
         <div className="card w-96 bg-base-100 shadow-xl m-10">
             <div>

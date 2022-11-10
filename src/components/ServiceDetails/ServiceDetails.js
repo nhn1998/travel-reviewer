@@ -6,10 +6,11 @@ import ReviewList from '../ReviewList/ReviewList';
 
 const ServiceDetails = ({children}) => {
     const services = useLoaderData();
+    console.log(services)
     const { user } = useContext(authContext)
     const [reviews, setReviews] = useState([])
     const navigate=useNavigate()
-    console.log(reviews)
+    // console.log(reviews)
     useEffect(()=>{
         fetch(`https://assaingment-eleven-server-nhn1998.vercel.app/users?servicesId=${services._id}`)
         .then(res=>res.json())
@@ -28,13 +29,15 @@ const ServiceDetails = ({children}) => {
         const unique = services?._id;
         const photoURL=user?.photoURL;
         const email = user?.email;
+        const serviceName = services.name;
 
         const review = {
             Review: Area,
             name,
             servicesId:unique,
             photoURL,
-            email
+            email,
+            serviceName
         }
         fetch('https://assaingment-eleven-server-nhn1998.vercel.app/users', {
             method: 'POST',
@@ -70,7 +73,7 @@ const ServiceDetails = ({children}) => {
             </div>
             <div className='mt-20'>
                 <div className="text-4xl">Here you can add your review</div>
-                <h1 className='text-2xl ml-20'>this servie has {reviews.length} reviews</h1>
+                <h1 className='text-2xl ml-20'>this service has {reviews.length} reviews</h1>
                 <form onSubmit={HandleUser}>
                     <textarea name='text' className="textarea textarea-primary w-1/2 p-10 border mt-5 ml-20" placeholder="Your review" required></textarea>
                     <div>

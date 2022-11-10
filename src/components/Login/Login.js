@@ -5,7 +5,7 @@ import image from '../SignUp/login.jpg'
 import { FaGooglePlus } from "react-icons/fa";
 
 const Login = () => {
-    const {login,googleLogin}=useContext(authContext);
+    const {login,googleLogin,loading}=useContext(authContext);
     const [error,setError]=useState(null)
     const navigate = useNavigate()
     const location =useLocation()
@@ -21,6 +21,7 @@ const Login = () => {
             console.log(user)
             form.reset();
             setError('')
+            navigate(from, {replace: true});
             
         })
         .catch(err=>{

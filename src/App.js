@@ -10,6 +10,9 @@ import Login from './components/Login/Login';
 import AllServices from './components/AllServices/AllServices';
 import ServiceDetails from './components/ServiceDetails/ServiceDetails';
 import WrongRoute from './components/WrongRoute';
+import MyReview from './components/MyReview/MyReview';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import AddServices from './components/MyReview/AddServices';
 
 
 
@@ -40,6 +43,14 @@ function App() {
         {
           path:'/login',
           element:<Login></Login>
+        },
+        {
+          path:'/myreviews',
+          element:<PrivateRoute><MyReview></MyReview></PrivateRoute>
+        },
+        {
+          path:'/addservices',
+          element:<AddServices></AddServices>
         },
         {
           path:'/services',
