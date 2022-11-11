@@ -90,7 +90,7 @@ const ServiceDetails = ({children}) => {
                     <div className='ml-10'>
                         
                         {
-                            reviews.map(revie=><ReviewList key={revie._id} revie={revie}></ReviewList>)
+                            reviews?.length && reviews.map(revie=><ReviewList key={revie._id} revie={revie}></ReviewList>)
                         }
                     </div>
                 </form>

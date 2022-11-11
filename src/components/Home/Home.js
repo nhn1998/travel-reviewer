@@ -10,16 +10,22 @@ import image3 from './img3.jpg'
 import image4 from './img4.jpg'
 import image5 from './img5.jpg'
 const Home = () => {
-    const services = useLoaderData();
     // console.log(services)
+    const [services,setServices]=useState([])
+    useEffect(()=>{
+        fetch('https://assaingment-eleven-server.vercel.app/service')
+        .then(res=>res.json())
+        .then(data=>setServices(data))
+    },[])
     useTitle('Home')
     const [addServices,setAddServices]=useState([])
     console.log(addServices)
     useEffect(()=>{
-        fetch('https://assaingment-eleven-server-nhn1998.vercel.app/addServices')
+        fetch('https://assaingment-eleven-server.vercel.app/addServices')
         .then(res=>res.json())
         .then(data=>setAddServices(data))
     },[])
+
 
     return (
         <div>
@@ -59,7 +65,7 @@ const Home = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             
             {
-                services.map(service =><Services key={service._id} service={service}></Services>)
+                services?.length && services?.map(service =><Services key={service._id} service={service}></Services>)
             }
         </div>
         <div>
@@ -72,7 +78,7 @@ const Home = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10'>
                 {
-                    addServices.map(addservice=><AnotherHome key={addservice._id} addservice={addservice}></AnotherHome>)
+                    addServices?.length && addServices.map(addservice=><AnotherHome key={addservice._id} addservice={addservice}></AnotherHome>)
                 }
             </div>
         </div>

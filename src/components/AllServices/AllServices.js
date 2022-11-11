@@ -12,7 +12,7 @@ const AllServices = () => {
             <div className="text-4xl mt-10 text-center">Here you can see all services</div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 gap-10'>
                 {
-                    services.map(service=><AnotherServices key={service._id} service = {service}></AnotherServices>)
+                    services?.length && services.map(service=><AnotherServices key={service._id} service = {service}></AnotherServices>)
                 }
             </div>
         </div>

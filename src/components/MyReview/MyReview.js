@@ -9,7 +9,7 @@ const MyReview = () => {
     // console.log(reviews)
     useTitle('review')
     useEffect(()=>{
-        fetch(`https://assaingment-eleven-server-nhn1998.vercel.app/users/myReviews?email=${user?.email}`)
+        fetch(`https://assaingment-eleven-server-nhn1998.vercel.app/myReviews?email=${user?.email}`)
         .then(res=>res.json())
         .then(data=>{
             setReviews(data)
